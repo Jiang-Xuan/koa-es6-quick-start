@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>HTTP POST</title>
+</head>
+<body>
+  <input type="file"><br>
+  <button onclick="test()">提交</button>
+  <script>
+    function test() {
+      const formData = new FormData()
+      const file = document.getElementsByTagName('input')[0].files[0]
+      formData.append('file', file)
+      formData.append('token', 'fewfgwgwgfeewqgeqwgr')
+
+      let XHR = new XMLHttpRequest()
+      XHR.open('POST', 'http://127.0.0.1:3300/http/post', true)
+      XHR.send(formData)   
+    }
+  </script>
+</body>
+</html>

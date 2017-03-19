@@ -1,0 +1,11 @@
+{
+  // http://babeljs.io/docs/plugins/preset-env/
+  "presets": [["env", { // env preset.This preset is important.Every stage should be use this preset
+    "target": { // preset compile target
+      "node": true
+    } 
+  }]],
+
+  // http://babeljs.io/docs/plugins/transform-runtime/#why
+  "plugins": ["transform-runtime"] // register some necessary modules.For example, regenerator etc.
+}
