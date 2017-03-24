@@ -2,6 +2,10 @@ import fs from 'fs'
 import Koa from 'koa'
 import Router from 'koa-router'
 import body from 'koa-better-body'
+import logger from 'koa-logger'
+import convert from 'koa-convert'
+import loggers from './libs/loggers'
+import { PORT } from './config'
 
 const app = new Koa
 const router = new Router
@@ -20,11 +24,14 @@ app.use((ctx, next) => {
   return next()
 })
 
-app.use(body())
+app.use(logger())
+
+
+app.use(convert(body()))
 
 app.use(router.routes())
 app.use(apiRouter.routes())
 
-app.listen(3300, () => {
-  console.log('open 127.0.0.1:3300')
+app.listen(PORT, () => {
+  loggers.debug(`Listening in ${PORT} port.`)
 })
